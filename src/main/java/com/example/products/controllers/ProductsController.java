@@ -1,8 +1,10 @@
 package com.example.products.controllers;
 import com.example.products.models.ProductModel;
 import com.example.products.services.ProductServices;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+
 @RestController
 public class ProductsController {
     private final ProductServices service;
@@ -12,7 +14,7 @@ public class ProductsController {
     }
 
     @PostMapping("/add")
-    public ProductModel addProduct(@RequestBody ProductModel product) {
+    public ProductModel addProduct(@Valid @RequestBody ProductModel product) {
         return service.addProduct(product);
     }
 
